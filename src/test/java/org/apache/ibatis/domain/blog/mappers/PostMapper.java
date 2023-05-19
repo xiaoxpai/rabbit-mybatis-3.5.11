@@ -12,6 +12,7 @@ public interface PostMapper {
 
     PostLite selectPostLite();
 
+
     List<Post> findPost(Post post);
 
     List<Post> selectPostIn(List<Integer> ids);
