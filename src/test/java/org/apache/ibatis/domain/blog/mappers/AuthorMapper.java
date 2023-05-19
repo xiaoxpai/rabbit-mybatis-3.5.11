@@ -98,4 +98,10 @@ public interface AuthorMapper {
    */
   int updateAuthor(Author author);
 
+  /**
+   * 必要时更新作者单条记录
+   * @param author Author
+   * @return int 更新的记录数
+   */
+  int updateAuthorIfNecessary(Author author);
 }
