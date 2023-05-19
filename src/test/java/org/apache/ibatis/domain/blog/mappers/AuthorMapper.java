@@ -104,4 +104,17 @@ public interface AuthorMapper {
    * @return int 更新的记录数
    */
   int updateAuthorIfNecessary(Author author);
+
+  /**
+   * xml参数可选的查询
+   *     id - 这是声明的id。它在命名空间中必须是唯一的。
+   *     resultType - 由该查询返回的每个结果的返回类型。
+   *     fetchSize - 这是给驱动程序的一个提示，以等于指定数字的大小来流转结果。
+   *     timeout - 这是提示驱动程序在超时前等待指定秒数的提示。
+   *     statementType - STATEMENT、PREPARED 或 CALLABLE。默认为PREPARED。
+   *     resultSetType - FORWARD_ONLY, SCROLL_SENSITIVE 或 SCROLL_INSENSITIVE。默认为FORWARD_ONLY。
+   *     flushCache - 将此设置为true，以强制会话在执行当前语句之前刷新所有挂起的语句。
+   *     useCache - 将此设置为false，以绕过会话缓存。
+   */
+  void selectWithOptions(Author author);
 }
