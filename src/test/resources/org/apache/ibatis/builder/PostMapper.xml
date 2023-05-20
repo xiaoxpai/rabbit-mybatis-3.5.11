@@ -172,4 +172,17 @@
     </foreach>
     ORDER BY P.ID
   </select>
+
+  <select id="selectPostLikeList" resultType="org.apache.ibatis.domain.blog.Post">
+    select *  from POST
+    <where>
+      <if test="subject != null and subject != ''">
+        and subject like concat('%', #{subject}, '%')
+      </if>
+      <if test="body != null and body != ''">
+        and body =#{body}
+      </if>
+    </where>
+    order by author_id asc
+  </select>
 </mapper>

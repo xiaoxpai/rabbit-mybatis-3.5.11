@@ -32,4 +32,9 @@ public interface PostMapper {
      * TODO 待完善
      */
     void updateCascade(Post post);
+
+    /**
+     * 模糊查询&条件查询
+     */
+    List<Post> selectPostLikeList(Post post);
 }
