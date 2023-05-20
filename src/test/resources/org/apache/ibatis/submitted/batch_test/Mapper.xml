@@ -21,6 +21,12 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.apache.ibatis.submitted.batch_test.Mapper">
+    <!--
+    resultMap
+        id 为 getUser 的查询语句，返回类型为 org.apache.ibatis.submitted.batch_test.User
+        resultMap 用于处理一对一关系，id 属性指定了 resultMap 的 id，type 属性指定了返回类型
+        association 标签用于处理一对一关系，property 属性指定了 User 类中的 dept 属性，column 属性指定了 dept_id 字段
+    -->
     <resultMap id="userResultMap" type="org.apache.ibatis.submitted.batch_test.User">
         <id property="id" column="id" />
         <result property="name" column="name" />
