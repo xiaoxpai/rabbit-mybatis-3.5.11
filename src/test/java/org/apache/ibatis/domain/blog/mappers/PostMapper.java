@@ -20,4 +20,16 @@ public interface PostMapper {
     List<Post> selectOddPostsIn(Integer id);
 
     List<Post> selectOddPostsInKeysList();
+
+    /**
+     * 可选择性更新数据
+     */
+    void updateSelective(Post post);
+
+
+    /**
+     * 级联更新数据
+     * TODO 待完善
+     */
+    void updateCascade(Post post);
 }

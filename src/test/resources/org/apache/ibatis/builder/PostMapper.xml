@@ -63,6 +63,33 @@
       <id property="id" column="id"/>
   </resultMap>
 
+  <update id="updateSelective">
+    update post
+    <set>
+      <if test="subject != null and subject != '' ">
+        subject = #{subject},
+      </if>
+      <if test="body != null and body != '' ">
+        body = #{body},
+      </if>
+      <if test="author_id != null">
+        author_id
+        <if test="author_id == null">= null</if>
+        <if test="author_id != null">= #{author_id}</if>
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+
+  <update id="updateCascade">
+    update post
+    <set>
+      <if test="subject != null">subject = #{subject},</if>
+      <if test="body != null">body = #{body}</if>
+    </set>
+    where id = #{id}
+  </update>
+
   <select id="selectPostLite" resultMap="postLiteMap">
       select id, blog_id from post where blog_id is not null
   </select>
