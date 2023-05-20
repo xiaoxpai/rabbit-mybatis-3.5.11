@@ -17,6 +17,10 @@ package org.apache.ibatis.submitted.batch_keys;
 
 public interface Mapper {
 
+  /**
+   * 查询数据并插入到另一张表
+   * @param user User
+   */
   void insert(User user);
 
   void insertIdentity(User user);
