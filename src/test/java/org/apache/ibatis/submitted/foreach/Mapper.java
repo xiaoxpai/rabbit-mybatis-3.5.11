@@ -56,4 +56,9 @@ public interface Mapper {
    * 批量删除
    */
   int batchDelete(@Param("ids") List<Integer> ids);
+
+    /**
+     * 批量插入
+     */
+    int batchInsert(@Param("users") List<User> users);
 }

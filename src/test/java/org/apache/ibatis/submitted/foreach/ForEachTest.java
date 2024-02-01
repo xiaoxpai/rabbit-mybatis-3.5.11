@@ -34,6 +34,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ForEachTest {
@@ -52,6 +53,30 @@ class ForEachTest {
             "org/apache/ibatis/submitted/foreach/CreateDB.sql");
   }
 
+  /**
+   * 批量插入
+   */
+@DisplayName("test:批量插入")
+@Test
+    void batchInsert() {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+        Mapper mapper = sqlSession.getMapper(Mapper.class);
+        List<User> users = new ArrayList<>();
+        for (int i = 7; i <= 20; i++) {
+            User user = new User();
+            user.setId(i);
+            user.setName("User" + i);
+            users.add(user);
+        }
+        int count = mapper.batchInsert(users);
+        Assertions.assertEquals(14, count);
+        }
+    }
+
+  /**
+   * 批量删除
+   */
+  @DisplayName("test:批量删除")
   @Test
   void batchDelete() {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {

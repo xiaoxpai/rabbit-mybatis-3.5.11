@@ -78,6 +78,13 @@
     </foreach>
   </insert>
 
+  <insert id="batchInsert">
+    insert into users (id, name) values
+    <foreach item="item" collection="users" separator=",">
+        (#{item.id}, #{item.name})
+    </foreach>
+  </insert>
+
   <select id="itemVariableConflict" resultType="_int">
     select * from users where id in
     <foreach collection="ids" item="id" open="(" close=")" separator=",">
