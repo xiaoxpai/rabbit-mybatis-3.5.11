@@ -1,5 +1,6 @@
-MyBatis SQL Mapper Framework for Java
+MyBatis SQL Mapper Framework for Java 
 =====================================
+`version-3.5.11`
 
 [![build](https://github.com/mybatis/mybatis-3/workflows/Java%20CI/badge.svg)](https://github.com/mybatis/mybatis-3/actions?query=workflow%3A%22Java+CI%22)
 [![Coverage Status](https://coveralls.io/repos/mybatis/mybatis-3/badge.svg?branch=master&service=github)](https://coveralls.io/github/mybatis/mybatis-3?branch=master)
