@@ -51,4 +51,9 @@ public interface Mapper {
   int countUserWithNullableIsTrue(User user);
 
   int countUserWithNullableIsFalse(User user);
+
+  /**
+   * 批量删除
+   */
+  int batchDelete(@Param("ids") List<Integer> ids);
 }

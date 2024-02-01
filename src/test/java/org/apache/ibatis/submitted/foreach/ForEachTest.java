@@ -53,6 +53,18 @@ class ForEachTest {
   }
 
   @Test
+  void batchDelete() {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      Mapper mapper = sqlSession.getMapper(Mapper.class);
+      List<Integer> ids = new ArrayList<>();
+      ids.add(1);
+      ids.add(3);
+      int count = mapper.batchDelete(ids);
+      Assertions.assertEquals(2, count);
+    }
+  }
+
+  @Test
   void shouldGetAUser() {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       Mapper mapper = sqlSession.getMapper(Mapper.class);
@@ -123,6 +135,10 @@ class ForEachTest {
     }
   }
 
+  /**
+   * JDK17
+   *
+   */
   @Test
   void shouldRemoveItemVariableInTheContext() {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {

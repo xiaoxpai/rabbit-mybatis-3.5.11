@@ -22,7 +22,14 @@
 
 <mapper namespace="org.apache.ibatis.submitted.foreach.Mapper">
 
-    <select id="getUser" resultType="org.apache.ibatis.submitted.foreach.User">
+  <delete id="batchDelete">
+    delete from users where id in
+    <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+
+  <select id="getUser" resultType="org.apache.ibatis.submitted.foreach.User">
         select * from users
          WHERE id in (
         <foreach item="item" index="index" collection="friendList"
@@ -72,12 +79,12 @@
   </insert>
 
   <select id="itemVariableConflict" resultType="_int">
-    select count(*) from users where id in
+    select * from users where id in
     <foreach collection="ids" item="id" open="(" close=")" separator=",">
-      <foreach collection="ids2" item="id">
-        #{id},
-      </foreach>
-      #{id}
+        <foreach collection="ids2" item="id">
+          #{id},
+        </foreach>
+        #{id}
     </foreach>
     or id = #{id}
   </select>
